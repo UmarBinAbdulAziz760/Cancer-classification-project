@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cancer Image Classification &mdash; Demo</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Cancer Image Classification</h1>
+      <p class="hero-subtitle">
+        Select a classification type, upload a medical image, and get a model prediction with a
+        confidence score and a highlighted region of interest.
+      </p>
+      <p class="banner">
+        &#9888;&#65039; Research / decision-support tool only &mdash; not a medical device and not a
+        substitute for professional clinical diagnosis. No accounts, no images are stored.
+      </p>
+    </header>
+
+    <main class="card" id="app">
+
+      <div id="status-message" class="status-message hidden"></div>
+
+      <section id="classification-type-section" class="section">
+        <h2>Classification Type</h2>
+        <select id="classification-type-select" class="classification-select"></select>
+      </section>
+
+      <section id="domain-info-section" class="section hidden">
+        <div class="domain-info" id="domain-info">
+          <strong id="domain-label"></strong>
+          <p id="domain-hint"></p>
+          <p class="domain-classes" id="domain-classes"></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Upload Medical Image</h2>
+        <div id="upload-zone" class="upload-zone">
+          <input id="file-input" type="file" accept="image/png,image/jpeg,image/webp" hidden />
+          <div id="upload-placeholder" class="upload-placeholder">
+            <div class="upload-icon">&#128247;</div>
+            <p><strong>Click to upload</strong> or drag an image here</p>
+            <p class="upload-hint">PNG, JPEG, or WebP &middot; up to 10&nbsp;MB</p>
+          </div>
+          <img id="upload-preview" class="upload-preview hidden" alt="Selected image preview" />
+        </div>
+      </section>
+
+      <button id="classify-button" class="primary-button" disabled>Analyse Image</button>
+
+      <section id="result-section" class="section result-section hidden">
+        <h2>Result</h2>
+
+        <div id="low-confidence-warning" class="low-confidence-warning hidden"></div>
+
+        <div class="result-headline">
+          <div class="result-row">
+            <span class="result-label">Model Prediction:</span>
+            <span class="predicted-class" id="predicted-class"></span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Confidence:</span>
+            <span class="confidence" id="confidence"></span>
+          </div>
+        </div>
+
+        <div class="image-comparison">
+          <figure>
+            <img id="original-image" alt="Uploaded image (resized)" />
+            <figcaption id="model-caption">Uploaded image</figcaption>
+          </figure>
+          <figure>
+            <img id="gradcam-image" alt="Grad-CAM overlay" />
+            <figcaption>Grad-CAM overlay (highlighted region)</figcaption>
+          </figure>
+        </div>
+
+        <h3>Class probabilities</h3>
+        <div id="probability-bars" class="probability-bars"></div>
+
+        <p class="disclaimer" id="disclaimer"></p>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>Backend: FastAPI &middot; Frontend: plain HTML/CSS/JS &mdash; no build step, no Node.js required.</p>
+    </footer>
+  </div>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>

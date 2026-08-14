@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Datasets & training artifacts (large binaries - see models/README.md and
+# data/README notes; keep the folders themselves via .gitkeep)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/imagenet_weights/*
+!data/imagenet_weights/.gitkeep
+models/*
+!models/.gitkeep
+!models/README.md
+!models/breast/
+!models/colorectal/
+!models/skin/
+models/breast/*
+!models/breast/.gitkeep
+models/colorectal/*
+!models/colorectal/.gitkeep
+models/skin/*
+!models/skin/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
